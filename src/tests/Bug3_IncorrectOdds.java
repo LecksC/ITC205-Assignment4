@@ -4,13 +4,15 @@ import static org.junit.Assert.*;
 
 import java.util.Random;
 
+import org.junit.runners.MethodSorters;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 
 import crown_and_anchor.Dice;
 import crown_and_anchor.DiceValue;
 import crown_and_anchor.Game;
 import crown_and_anchor.Player;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Bug3_IncorrectOdds {
 
 	
@@ -20,7 +22,7 @@ public class Bug3_IncorrectOdds {
 		Player player = new Player("Pete", 100000000);
 		Game game = new Game(new Dice(), new Dice(), new Dice());
 		int wins = 0;
-		int rounds = 500000;
+		int rounds = 5000000;
 		
 		for(int i = 0; i < rounds; i++)
 		{
@@ -29,7 +31,209 @@ public class Bug3_IncorrectOdds {
 			if(winnings > 0)
 				wins++;
 		}
-		assertEquals(0.42d, (double)wins/(double)rounds, 0.001d);
+		assertEquals(0.42d, (double)wins/(double)rounds, 0.01d);
 	}
 
+	@Test
+	public void test_rollDice_OddsOfAnchor() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		Dice dice = new Dice();
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = dice.roll() == DiceValue.ANCHOR;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_rollDice_OddsOfClub() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		Dice dice = new Dice();
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = dice.roll() == DiceValue.CLUB;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_rollDice_OddsOfCrown() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		Dice dice = new Dice();
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = dice.roll() == DiceValue.CROWN;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_rollDice_OddsOfDiamond() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		Dice dice = new Dice();
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = dice.roll() == DiceValue.DIAMOND;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_rollDice_OddsOfHeart() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		Dice dice = new Dice();
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = dice.roll() == DiceValue.HEART;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_rollDice_OddsOfSpade() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		Dice dice = new Dice();
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = dice.roll() == DiceValue.SPADE;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+
+	@Test
+	public void test_getRandomDiceValue_OddsOfAnchor() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = DiceValue.getRandom() == DiceValue.ANCHOR;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_getRandomDiceValue_OddsOfClub() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = DiceValue.getRandom() == DiceValue.CLUB;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_getRandomDiceValue_OddsOfCrown() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = DiceValue.getRandom() == DiceValue.CROWN;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_getRandomDiceValue_OddsOfDiamond() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = DiceValue.getRandom() == DiceValue.DIAMOND;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_getRandomDiceValue_OddsOfHeart() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = DiceValue.getRandom() == DiceValue.HEART;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_getRandomDiceValue_OddsOfSpade() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			boolean match = DiceValue.getRandom() == DiceValue.SPADE;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1d/6d, (double)matchs/(double)testRolls, 0.01d);
+	}
+	
+	@Test
+	public void test_getValueReturnsRolledValue() 
+	{
+		int matchs = 0;
+		int testRolls = 5000000;
+		Dice dice = new Dice();
+		
+		for(int i = 0; i < testRolls; i++)
+		{
+			DiceValue rolledValue = dice.roll(); 
+			boolean match = dice.getValue() == rolledValue;
+			if(match)
+				matchs++;
+		}
+		assertEquals(1, (double)matchs/(double)testRolls, 0);
+	}
 }
