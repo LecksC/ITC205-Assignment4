@@ -2,9 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -12,14 +10,8 @@ import crown_and_anchor.Dice;
 import crown_and_anchor.DiceValue;
 import crown_and_anchor.Game;
 import crown_and_anchor.Player;
-import crown_and_anchor.Dice;
-
 
 public class Bug1_PaysOutCorrectAmount {
-	
-	@Before
-	public void setUp() throws Exception {
-	}
 
 	@Test
 	public void testPlayRound_PlayerGetsCorrectWinnings_1Match() {
