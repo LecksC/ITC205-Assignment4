@@ -9,22 +9,22 @@ import crown_and_anchor.Dice;
 import crown_and_anchor.DiceValue;
 
 public class Unit_Dice {
-	Dice dice;
+	Dice _dice;
 	@Before
 	public void setUp() throws Exception {
-		dice = new Dice();
+		_dice = new Dice();
 	}
 
 	@Test
-	public void testDice() {
-		assertNotNull(dice);
-		assertDiceValueIsValid(dice.getValue());
+	public void testConstructor() {
+		assertNotNull(_dice);
+		assertDiceValueIsValid(_dice.getValue());
 	}
 
 	@Test
 	public void testGetValue() {
-		DiceValue expected = dice.roll();
-		DiceValue actual = dice.getValue();
+		DiceValue expected = _dice.roll();
+		DiceValue actual = _dice.getValue();
 		
 		assertDiceValueIsValid(actual);
 		assertEquals(expected,actual);
@@ -38,7 +38,7 @@ public class Unit_Dice {
 		
 		for(int i = 0; i < testRolls; i++)
 		{
-			DiceValue roll = dice.roll();
+			DiceValue roll = _dice.roll();
 			switch(roll)
 			{
 			case ANCHOR:
@@ -74,8 +74,8 @@ public class Unit_Dice {
 
 	@Test
 	public void testToString() {
-		String expected = dice.roll().toString();
-		String actual = dice.toString();
+		String expected = _dice.roll().toString();
+		String actual = _dice.toString();
 
 		assertEquals(expected,actual);
 	}
