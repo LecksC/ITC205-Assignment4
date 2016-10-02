@@ -2,11 +2,12 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import crown_and_anchor.DiceValue;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Unit_DiceValue {
 
 	@Test

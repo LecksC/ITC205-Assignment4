@@ -3,23 +3,19 @@ package tests;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import java.util.List;
-import java.util.Random;
 
-import org.mockito.runners.MockitoJUnitRunner;
-import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mockito;
-import org.mockito.Spy;
+import org.junit.runners.MethodSorters;
 
 import crown_and_anchor.Dice;
 import crown_and_anchor.DiceValue;
 import crown_and_anchor.Game;
 import crown_and_anchor.Player;
-@RunWith(MockitoJUnitRunner.class)
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Unit_Game {
 	final int INITIAL_BALANCE = 50;
 	Player _player;
@@ -27,6 +23,9 @@ public class Unit_Game {
 	Dice _dice2;
 	Dice _dice3;
 	Game _game;
+	
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 	
 	private void givenMockDicesCreated(DiceValue dice1Value, DiceValue dice2Value, DiceValue dice3Value)
 	{
@@ -58,8 +57,7 @@ public class Unit_Game {
 	{
 		_player = spy(new Player("Test guy", INITIAL_BALANCE));
 	}
-	@Rule
-	public final ExpectedException exception = ExpectedException.none();
+
 
 	@Test
 	public void testConstructor() {
@@ -102,7 +100,7 @@ public class Unit_Game {
 		_game.playRound(_player, pick, bet);
 		
 		verify(_player, times(1)).takeBet(bet);
-		verify(_player, times(1)).receiveWinnings(anyInt());
+
 	}
 	@Test
 	public void testPlayRound_OverLimit() {
@@ -116,8 +114,7 @@ public class Unit_Game {
 		try {
 			_game.playRound(_player, pick, bet);
 		} catch (IllegalArgumentException exception) {
-			verify(_player, times(0)).takeBet(anyInt());
-			verify(_player, times(0)).receiveWinnings(anyInt());
+			assertEquals(INITIAL_BALANCE, _player.getBalance());
 			throw exception;
 		}
 	}

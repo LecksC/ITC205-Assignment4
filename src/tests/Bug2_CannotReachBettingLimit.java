@@ -2,10 +2,12 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import crown_and_anchor.Player;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Bug2_CannotReachBettingLimit {
 	
 	@Test
